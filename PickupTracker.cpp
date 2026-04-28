@@ -1,5 +1,6 @@
 #include "PickupTracker.h"
 #include <iostream>
+#include <vector>
 
 void PickupTracker::addPickup(const std::string& item) {
     if (static_cast<int>(recentItems.size()) >= MAX_HISTORY) {
@@ -7,6 +8,39 @@ void PickupTracker::addPickup(const std::string& item) {
     }
 
     recentItems.push(item);
+    std::string rarity = extractRarity(item);
+    rarityCounts[rarity]++;
+}
+
+std::string PickupTracker::extractRarity(const std::string& item) const {
+    const std::string delimiter = " (";
+    size_t start = item.rfind(delimiter);
+    if (start == std::string::npos) {
+        return "Unknown";
+    }
+
+    size_t end = item.rfind(')');
+    if (end == std::string::npos || end <= start + delimiter.size()) {
+        return "Unknown";
+    }
+
+    return item.substr(start + delimiter.size(), end - (start + delimiter.size()));
+}
+
+void PickupTracker::displayRarityCounts() const {
+    if (rarityCounts.empty()) {
+        std::cout << "No rarity data available yet.\n";
+        return;
+    }
+
+    std::vector<std::string> order = {"Common", "Uncommon", "Rare", "Unknown"};
+    std::cout << "Rarity roll counts:\n";
+    for (const auto& rarity : order) {
+        auto it = rarityCounts.find(rarity);
+        if (it != rarityCounts.end()) {
+            std::cout << "  " << rarity << ": " << it->second << "\n";
+        }
+    }
 }
 
 void PickupTracker::displayRecentPickups() const {
@@ -26,4 +60,7 @@ void PickupTracker::displayRecentPickups() const {
         temp.pop();
         ++i;
     }
+
+    std::cout << "\n";
+    displayRarityCounts();
 }

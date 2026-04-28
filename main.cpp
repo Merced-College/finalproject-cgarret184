@@ -13,7 +13,8 @@ std::string defaultMessage() {
     std::cout << "\nTo roll for a new item, type 'R'. "
               << "To display inventory, type 'I'. "
               << "To show recent pickups, type 'H'. "
-              << "To quit, type 'Q'.\n";
+              << "To quit, type 'Q'.\n"
+              << "To show how many times you've rolled each rarity, type 'L'.\n";
 
     std::cin >> userInput;
     return userInput;
@@ -72,6 +73,9 @@ int main() {
         }
         else if (userInput == "H" || userInput == "h") {
             pickupTracker.displayRecentPickups();
+        }
+        else if (userInput == "L" || userInput == "l") {
+            pickupTracker.displayRarityCounts();
         }
         else if (userInput != "Q" && userInput != "q") {
             std::cout << "Unknown command.\n";

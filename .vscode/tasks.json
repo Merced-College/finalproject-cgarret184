@@ -7,9 +7,14 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.cpp",
+                "Inventory.cpp",
+                "InventoryActions.cpp",
+                "PickupTracker.cpp",
+                "RandomItemChooser.cpp",
+                "RandomItemList.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/main"
             ],
             "options": {
                 "cwd": "${fileDirname}"
