@@ -20,7 +20,7 @@ std::string defaultMessage() {
 }
 
 int main() {
-    std::cout << "Welcome to the inventory game.\n";
+    std::cout << "Welcome to the Inventory Item Rolling Game!\n";
 
     Inventory inventory;
     PickupTracker pickupTracker;
