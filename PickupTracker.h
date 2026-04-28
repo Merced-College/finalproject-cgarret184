@@ -1,3 +1,10 @@
+/**
+ * @brief The PickupTracker class tracks recent item pickups and rarity statistics.
+ *
+ * This class maintains a queue of the most recent pickups (up to 5 items) and a map
+ * counting the number of items rolled for each rarity level (Common, Uncommon, Rare).
+ * It provides methods to add pickups and display both recent items and rarity counts.
+ */
 #ifndef PICKUP_TRACKER_H
 #define PICKUP_TRACKER_H
 

@@ -1,3 +1,10 @@
+/**
+ * @brief The Inventory class manages the player's collection of items.
+ *
+ * This class provides functionality to add items to the inventory, remove items by index,
+ * display the current inventory, check if the inventory is full, and get the current size.
+ * The inventory has a maximum capacity of 10 items.
+ */
 #ifndef INVENTORY_H
 #define INVENTORY_H
 

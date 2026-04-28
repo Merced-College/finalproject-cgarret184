@@ -1,3 +1,10 @@
+/**
+ * @brief The RandomItemList class stores predefined item lists by rarity.
+ *
+ * This class initializes and provides access to vectors of items categorized as
+ * common, uncommon, and rare. These lists are used by the RandomItemChooser
+ * for random item selection in the gacha game.
+ */
 #ifndef RANDOM_ITEM_LIST_H
 #define RANDOM_ITEM_LIST_H
 

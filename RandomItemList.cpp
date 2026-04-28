@@ -1,3 +1,10 @@
+/**
+ * @brief Implementation of the RandomItemList class.
+ *
+ * This file contains the constructor for RandomItemList, which initializes
+ * the vectors of common, uncommon, and rare items, and provides getter methods.
+ */
+
 #include "RandomItemList.h"
 
 RandomItemList::RandomItemList() {

@@ -1,3 +1,10 @@
+/**
+ * @brief The RandomItemChooser class handles random item selection based on rarity.
+ *
+ * This class uses a Mersenne Twister random number generator to select items from
+ * provided lists of common, uncommon, and rare items, with weighted probabilities
+ * (70% common, 20% uncommon, 10% rare). It appends the rarity to the selected item name.
+ */
 #ifndef RANDOM_ITEM_CHOOSER_H
 #define RANDOM_ITEM_CHOOSER_H
 

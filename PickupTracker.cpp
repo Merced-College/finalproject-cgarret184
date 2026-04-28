@@ -1,13 +1,22 @@
+/**
+ * @brief Implementation of the PickupTracker class.
+ *
+ * This file contains the definitions for PickupTracker methods, handling the addition
+ * of pickups, extraction of rarity from items, and display of recent pickups and rarity counts.
+ */
+
 #include "PickupTracker.h"
 #include <iostream>
 #include <vector>
 
 void PickupTracker::addPickup(const std::string& item) {
+    // Keep only the most recent MAX_HISTORY pickups by removing the oldest entry when needed.
     if (static_cast<int>(recentItems.size()) >= MAX_HISTORY) {
         recentItems.pop();
     }
 
     recentItems.push(item);
+    // Extract the rarity from the item string using the private helper method.
     std::string rarity = extractRarity(item);
     rarityCounts[rarity]++;
 }
@@ -24,6 +33,7 @@ std::string PickupTracker::extractRarity(const std::string& item) const {
         return "Unknown";
     }
 
+    // Extract the rarity substring from the formatted item string.
     return item.substr(start + delimiter.size(), end - (start + delimiter.size()));
 }
 
@@ -35,6 +45,7 @@ void PickupTracker::displayRarityCounts() const {
 
     std::vector<std::string> order = {"Common", "Uncommon", "Rare", "Unknown"};
     std::cout << "Rarity roll counts:\n";
+    // Display rarity counts in a consistent order for readability.
     for (const auto& rarity : order) {
         auto it = rarityCounts.find(rarity);
         if (it != rarityCounts.end()) {
@@ -55,6 +66,7 @@ void PickupTracker::displayRecentPickups() const {
     std::queue<std::string> temp = recentItems;
     int i = 1;
 
+    // Iterate through the copied queue to display the recent pickup history in order.
     while (!temp.empty()) {
         std::cout << i << ": " << temp.front() << "\n";
         temp.pop();
@@ -62,5 +74,6 @@ void PickupTracker::displayRecentPickups() const {
     }
 
     std::cout << "\n";
+    // Call the private method to display rarity counts after showing recent pickups.
     displayRarityCounts();
 }
